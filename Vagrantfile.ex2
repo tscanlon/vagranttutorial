@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box_url = "https://atlas.hashicorp.com/hashicorp/boxes/precise32"
+  config.vm.box = "hashicorp/precise32"
+  config.vm.network "private_network", ip: "172.24.4.4"
+  # since we won't need portforwarding lets turn it off
+  # config.vm.network "forwarded_port", guest: 5000, host: 5001
+  # Okay lets start doing something a little more useful
+  # Lets make puppet do the things.
+  config.vm.provision "puppet"
+  # this looks for a manifest file at ./manifests/default.pp
+  # and ensures the state of the resource definitions
+end

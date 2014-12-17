@@ -1,0 +1,12 @@
+setuid vagrant
+setgid vagrant
+
+pre-start script
+  echo 'about to fall asleep' >> /var/log/sleepy.log
+end script
+
+exec nohup /usr/local/bin/sleepy.sh > /dev/null 2>&1
+
+pre-stop script
+  echo i\'m awake, i\'m awake >> /var/log/sleepy.log
+end script

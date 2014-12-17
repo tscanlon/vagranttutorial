@@ -1,0 +1,19 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box_url = "https://atlas.hashicorp.com/hashicorp/boxes/precise32"
+  config.vm.box = "hashicorp/precise32"
+  # IT is our friend, lets make sure we isolate our boxes from them 
+  # config.vm.network "private_network", type: "dhcp"
+  # I like the ability to mangle the hosts file later with 
+  # vagrant-hosts in very specific ways so I assign ips statically
+  config.vm.network "private_network", ip: "172.24.4.4"
+  # The major downside to private_network is now we have an nat
+  # layer. So if we need ports available we'll need to do portforwarding
+  config.vm.network "forwarded_port", guest: 5000, host: 5001
+  # lets also do something with the box automagically
+  config.vm.provision "shell", inline: "echo yes you can shell out to bash"
+end

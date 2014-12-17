@@ -1,0 +1,23 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box_url = "https://atlas.hashicorp.com/hashicorp/boxes/precise32"
+  config.vm.box = "hashicorp/precise32"
+  config.vm.hostname = "vagrant.tscanlon.iv"
+  config.vm.network "private_network", ip: "172.24.4.4"
+  config.vm.provision "puppet" do |puppet|
+    # okay so now lets start doing something a little closer to how
+    # a production setup would be
+    # site specific configuration is going to go in manifests
+    puppet.manifests_path = "manifests"
+    # specifically inside a file called site.pp
+    # from there we will import our node definitions
+    puppet.manifest_file = "site.pp"
+    # then we can start bundling descrete pieces of functionality
+    # inside modules
+    puppet.module_path = "modules"
+  end
+end
