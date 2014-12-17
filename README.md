@@ -21,4 +21,4 @@ Once you've installed Virtualbox and Vagrant you can test your setup by:
 what's here
 ___________
 
-In this there are a couple of Vagrant files to show you some of the basics and get you from a clean image to working with configuration management, specifically puppet in this case. There is also an example program that we can test working with init scripts and packaging.
+In this there are a couple of Vagrant files to show you some of the basics. These will get you from a clean image to working with configuration management, specifically puppet in this case. There is also an example program that we can test, setup an init script and package.
