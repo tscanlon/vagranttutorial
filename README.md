@@ -16,6 +16,7 @@ Once you've installed Virtualbox and Vagrant you can test your setup by:
 
 1. changing into this repo and running `vagrant up`. Note the first run will take a lot longer as it has to download the base image you'll be using for the rest of this tutorial.
 1. You can ssh into the box with `vagrant ssh` and test networking `ping google.com` You can test passwordless sudo with `sudo id`.
+1. You'll need one more thing downloaded and installed for some of these exercises: `vagrant plugin install vagrant-hosts`
 1. Lastly you can `exit` out of the ssh session and free up your resources with `vagrant destroy -f`
 
 what's here
